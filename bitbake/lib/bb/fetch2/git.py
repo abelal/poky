@@ -285,6 +285,7 @@ class Git(FetchMethod):
             runfetchcmd("%s pack-redundant --all | xargs -r rm" % ud.basecmd, d)
             try:
                 os.unlink(ud.fullmirror)
+                ud.write_tarballs = "1"
             except OSError as exc:
                 if exc.errno != errno.ENOENT:
                     raise

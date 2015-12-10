@@ -190,6 +190,7 @@ class Hg(FetchMethod):
                 runfetchcmd(pullcmd, d)
                 try:
                     os.unlink(ud.fullmirror)
+                    ud.write_tarballs = "1"
                 except OSError as exc:
                     if exc.errno != errno.ENOENT:
                         raise
